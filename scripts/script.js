@@ -21,13 +21,17 @@ function generateCards() {
 generateCards();
 
 $(document).ready(function () {
-    const places = [];
+    var places = [
+        // array of objects with properties for each tourist site
+    ];
+    // populate the cards based on the places array
+    // ...
     // event listener for when the continent filter option changes
     $('#continent-filter').change(function () {
-        let selectedContinent = $(this).val();
+        var selectedContinent = $(this).val();
         // loop through each card and hide/show based on the selected continent
         $('.card').each(function () {
-            let cardContinent = $(this).find('.continent').text();
+            var cardContinent = $(this).find('.continent').text();
             if (selectedContinent === "" || cardContinent === selectedContinent) {
                 $(this).show();
             } else {
