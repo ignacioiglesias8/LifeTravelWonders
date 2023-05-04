@@ -47,24 +47,3 @@ const sites = [{
     description: "The Taj Mahal is an ivory-white marble mausoleum on the right bank of the Yamuna river in the Indian city of Agra.",
 },
 ];
-
-const continents = [
-    {name: "America",    
-    countries: ["USA", "Canada", "Mexico", "Peru", "Brazil"]
-},
-{
-    name: "Europe",
-    countries: ["France", "Spain", "Italy", "Germany", "Greece"]
-},
-{
-    name: "Asia",
-    countries: ["China", "Japan", "India", "Thailand", "South Korea"]
-},
-{
-    name: "Africa",
-    countries: ["Egypt", "Kenya", "Morocco", "South Africa", "Tanzania"]
-},
-{
-    name: "Oceania",
-    countries: ["Australia", "New Zealand", "Fiji", "Papua New Guinea", "Vanuatu"]
-}];
