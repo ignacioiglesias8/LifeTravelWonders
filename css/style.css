@@ -1,0 +1,161 @@
+/* Global styles */
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+}
+
+a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Header styles */
+
+#header {
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+}
+
+#header .container {
+    padding: 15px 0;
+}
+
+#header img {
+    height: 50px;
+}
+
+#header nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-align: center;
+}
+
+#header nav ul li {
+    display: inline-block;
+}
+
+#header nav ul li a {
+    display: block;
+    padding: 10px 15px;
+}
+
+#header nav ul li.active a {
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 3px;
+}
+
+/* Main styles */
+
+#main {
+    margin-top: 100px;
+}
+
+#main .container {
+    margin-bottom: 50px;
+}
+
+#main h2 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+}
+
+#main p {
+    margin-bottom: 30px;
+}
+
+#main img {
+    max-width: 100%;
+}
+
+/* Section styles */
+
+section {
+    padding: 50px 0;
+}
+
+section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+}
+
+section p {
+    margin-bottom: 30px;
+}
+
+/* Services styles */
+
+.service {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.service img {
+    margin-bottom: 15px;
+}
+
+.service h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+/* Contact styles */
+
+#contact form input,
+#contact form textarea {
+    margin-bottom: 15px;
+}
+
+#contact form button {
+    margin-top: 15px;
+}
+
+/* Footer styles */
+
+footer {
+    background-color: #f8f9fa;
+}
+
+footer p {
+    margin-bottom: 0;
+}
+
+footer a {
+    margin-left: 15px;
+}
+
+@media (min-width: 768px) {
+    #header img {
+        height: 75px;
+    }
+
+    #header nav ul li a {
+        padding: 20px 30px;
+    }
+
+    #main h2 {
+        font-size: 3rem;
+    }
+
+    .service {
+        margin-bottom: 50px;
+    }
+}
