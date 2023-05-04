@@ -20,24 +20,3 @@ function generateCards() {
 
 generateCards();
 
-$(document).ready(function() {
-    // call the filterCards function whenever a dropdown menu value changes
-    $('#selectContinent, #selectCategory').change(filterCards);
-  
-    function filterCards() {
-      let selectedContinent = $('#selectContinent').val();
-      let selectedCategory = $('#selectCategory').val();
-  
-      $('.card').each(function() {
-        let cardContinent = $(this).data('continent');
-        let cardCategory = $(this).data('category');
-  
-        if ((selectedContinent === 'All Continents' || selectedContinent === cardContinent) && 
-            (selectedCategory === 'All Categories' || selectedCategory === cardCategory)) {
-          $(this).show();
-        } else {
-          $(this).hide();
-        }
-      });
-    }
-  });
