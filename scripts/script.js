@@ -21,41 +21,22 @@ function generateCards() {
 generateCards();
 
 function filterCards() {
-    const selectedContinent = $('#selectContinent').val();
-    const selectedCategory = $('#selectCategory').val();
+    var selectedContinent = $('#selectContinent').val();
+    var selectedCategory = $('#selectCategory').val();
   
-    let filteredSites = sites;
+    $('.card').each(function() {
+      var cardContinent = $(this).data('continent');
+      var cardCategory = $(this).data('category');
   
-    if (selectedContinent !== 'All Continents') {
-      filteredSites = filteredSites.filter(site => site.continent === selectedContinent);
-    }
-  
-    if (selectedCategory !== 'All Categories') {
-      filteredSites = filteredSites.filter(site => site.category === selectedCategory);
-    }
-  
-    $('#cardDeck').empty();
-  
-    if (filteredSites.length === 0) {
-      $('#cardDeck').append(`<div class="col-12 text-center"><p>No results found</p></div>`);
-    } else {
-      filteredSites.forEach(site => {
-        $('#cardDeck').append(`
-          <div class="col-md-4 mb-4">
-            <div class="card">
-              <img src="${site.image}" class="card-img-top" alt="${site.name}">
-              <div class="card-body">
-                <h5 class="card-title">${site.name}</h5>
-                <p class="card-text">${site.description}</p>
-                <p class="card-text"><strong>${site.continent}</strong></p>
-                <p class="card-text"><strong>${site.category}</strong></p>
-              </div>
-            </div>
-          </div>
-        `);
-      });
-    }
+      if ((selectedContinent === 'All Continents' || selectedContinent === cardContinent) && 
+          (selectedCategory === 'All Categories' || selectedCategory === cardCategory)) {
+        $(this).show();
+      } else {
+        $(this).hide();
+      }
+    });
   }
+  
 
   $(document).ready(function() {
     // Call filterCards() whenever the user selects a continent or category
