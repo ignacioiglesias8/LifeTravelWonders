@@ -50,13 +50,13 @@
             <div class="row justify-content-around col-md-12">
                 <form>
                     <div class="form-group">
-                        <label for="destination-select">Filter by Region:</label>
-                        <select class="form-control" id="destination-select">
-                            <option value="all">All Destinations</option>
-                            <option value="europe">Europe</option>
+                        <label for="continent-filter">Continent:</label>
+                        <select id="continent-filter" class="form-control">
+                            <option value="">All Continents</option>
                             <option value="asia">Asia</option>
-                            <option value="north-america">America</option>
+                            <option value="america">America</option>
                             <option value="africa">Africa</option>
+                            <option value="europe">Europe</option>
                             <option value="oceania">Oceania</option>
                         </select>
                     </div>
@@ -78,14 +78,14 @@
                     </div>
                 </form>
             </div>
-        <section id="cards">
-            <div class="container">
-                <h2>Tourist Sites</h2>
-                <div class="row" id="card-row">
+            <section id="cards">
+                <div class="container">
+                    <h2>Tourist Sites</h2>
+                    <div class="row" id="card-row">
                         <!-- Cards will be dynamically added here -->
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
         </section>
         <section id="about" class="container">
             <h2>About</h2>
@@ -138,6 +138,7 @@
             </div>
         </div>
     </footer>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="scripts/data.js"></script>
     <script src="scripts/script.js"></script>
 </body>

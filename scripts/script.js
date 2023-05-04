@@ -19,3 +19,20 @@ function generateCards() {
 }
 
 generateCards();
+
+$(document).ready(function () {
+    const places = [];
+    // event listener for when the continent filter option changes
+    $('#continent-filter').change(function () {
+        let selectedContinent = $(this).val();
+        // loop through each card and hide/show based on the selected continent
+        $('.card').each(function () {
+            let cardContinent = $(this).find('.continent').text();
+            if (!selectedContinent || cardContinent === selectedContinent) {
+                $(this).show();
+            } else {
+                $(this).hide();
+            }
+        });
+    });
+});
