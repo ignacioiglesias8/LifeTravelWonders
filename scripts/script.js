@@ -20,30 +20,24 @@ function generateCards() {
 
 generateCards();
 
-function filterCards() {
-    var selectedContinent = $('#selectContinent').val();
-    var selectedCategory = $('#selectCategory').val();
+$(document).ready(function() {
+    // call the filterCards function whenever a dropdown menu value changes
+    $('#selectContinent, #selectCategory').change(filterCards);
   
-    $('.card').each(function() {
-      var cardContinent = $(this).data('continent');
-      var cardCategory = $(this).data('category');
+    function filterCards() {
+      let selectedContinent = $('#selectContinent').val();
+      let selectedCategory = $('#selectCategory').val();
   
-      if ((selectedContinent === 'All Continents' || selectedContinent === cardContinent) && 
-          (selectedCategory === 'All Categories' || selectedCategory === cardCategory)) {
-        $(this).show();
-      } else {
-        $(this).hide();
-      }
-    });
-  }
+      $('.card').each(function() {
+        let cardContinent = $(this).data('continent');
+        let cardCategory = $(this).data('category');
   
-
-  $(document).ready(function() {
-    // Call filterCards() whenever the user selects a continent or category
-    $('#selectContinent, #selectCategory').on('change', function() {
-      filterCards();
-    });
-  
-    // Display all cards by default
-    filterCards();
+        if ((selectedContinent === 'All Continents' || selectedContinent === cardContinent) && 
+            (selectedCategory === 'All Categories' || selectedCategory === cardCategory)) {
+          $(this).show();
+        } else {
+          $(this).hide();
+        }
+      });
+    }
   });
