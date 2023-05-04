@@ -28,7 +28,7 @@ $(document).ready(function () {
         // loop through each card and hide/show based on the selected continent
         $('.card').each(function () {
             let cardContinent = $(this).find('.continent').text();
-            if (!selectedContinent || cardContinent === selectedContinent) {
+            if (selectedContinent === "" || cardContinent === selectedContinent) {
                 $(this).show();
             } else {
                 $(this).hide();
