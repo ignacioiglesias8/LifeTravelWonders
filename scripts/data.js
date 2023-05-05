@@ -46,6 +46,14 @@ const sites = [{
         image: "https://via.placeholder.com/400x250?text=Chichen+Itza",
         description: "The Taj Mahal is an ivory-white marble mausoleum on the right bank of the Yamuna river in the Indian city of Agra.",
     },
+    {
+        name: "Teotihuacan",
+        continent: "America",
+        country: "Mexico",
+        region: "Estado de Mexico",
+        image: "https://via.placeholder.com/400x250?text=Chichen+Itza",
+        description: "The Taj Mahal is an ivory-white marble mausoleum on the right bank of the Yamuna river in the Indian city of Agra.",
+    },
 ];
 
 const continents = [{
@@ -68,4 +76,10 @@ const continents = [{
         name: "Oceania",
         countries: ["Australia", "New Zealand", "Fiji", "Papua New Guinea", "Vanuatu"]
     }
+];
+
+const Region = [{
+    name: "Mexico",
+    countries: ["Estado de Mexico", "Yucatan"]
+},
 ];

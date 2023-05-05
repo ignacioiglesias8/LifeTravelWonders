@@ -1,5 +1,6 @@
 const continentSelect = document.querySelector("#continent-filter");
 const countrySelect = document.querySelector("#country-filter");
+const subRegionSelect = document.querySelector("#country-filter");
 const siteList = document.querySelector("#card-row");
 
 // Define una función para crear una tarjeta de sitio turístico
@@ -62,8 +63,14 @@ continentSelect.addEventListener("change", () => {
 countrySelect.addEventListener("change", () => {
     const selectedCountry = countrySelect.value;
     let filteredSites;
-    if (selectedCountry === "all") {
-        filteredSites = sites;
+    if (selectedCountry === "all-countries") {
+        const selectedContinent = continentSelect.value;
+        if (selectedContinent === "all") {
+            filteredSites = sites;
+        } else {
+            filteredSites = sites.filter((site) => site.continent === selectedContinent);
+        }
+        createCountryList(filteredSites);
     } else {
         filteredSites = sites.filter((site) => site.country === selectedCountry);
     }
