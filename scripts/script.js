@@ -97,18 +97,17 @@ countrySelect.addEventListener("change", () => {
 
 regionSelect.addEventListener("change", () => {
     const selectedRegion = regionSelect.value;
+    const selectedCountry = countrySelect.value;
     let filteredSites;
     if (selectedRegion === "all-regions") {
-        const selectedRegion = regionSelect.value;
-        if (selectedRegion === "all"){
+        if (selectedCountry === "all-countries") {
             filteredSites = sites;
-        }else{
-            filteredSites = sites.filter((site) => site.continent === selectedContinent);
+        } else {
+            filteredSites = sites.filter((site) => site.country === selectedCountry);
         }
-        createCountryList(filteredSites); 
+        createRegionList(filteredSites);
     } else {
         filteredSites = sites.filter((site) => site.region === selectedRegion);
-        createRegionList(filteredSites);
     }
     addSitesToPage(filteredSites);
 });
