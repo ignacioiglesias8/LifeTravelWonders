@@ -70,6 +70,8 @@ continentSelect.addEventListener("change", () => {
     let filteredSites;
     if (selectedContinent === "all") {
         filteredSites = sites;
+        countrySelect.innerHTML = `<option value="all-countries">All Countries</option>`;
+        regionSelect.innerHTML = `<option value="all-regions">All Regions</option>`;
     } else {
         filteredSites = sites.filter((site) => site.continent === selectedContinent);
         createCountryList(filteredSites);
@@ -82,6 +84,7 @@ countrySelect.addEventListener("change", () => {
     let filteredSites;
     if (selectedCountry === "all-countries") {
         const selectedContinent = continentSelect.value;
+        regionSelect.innerHTML = `<option value="all-regions">All Regions</option>`;
         if (selectedContinent === "all") {
             filteredSites = sites;
         } else {
