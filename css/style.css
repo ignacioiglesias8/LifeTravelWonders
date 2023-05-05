@@ -197,3 +197,34 @@ footer a {
         text-align: center;
     }
 }
+
+/* adjust the layout of the pagination */
+.pagination {
+    margin: 0;
+    padding: 0;
+}
+
+.pagination li {
+    display: inline-block;
+    margin: 0 5px;
+    border-radius: 5px;
+}
+
+.pagination li.active a {
+    background-color: #007bff;
+    color: #fff;
+    border-color: #007bff;
+}
+
+.pagination li a {
+    color: #007bff;
+    border: 1px solid #007bff;
+    padding: 8px 12px;
+    text-decoration: none;
+}
+
+.pagination li a:hover {
+    background-color: #007bff;
+    color: #fff;
+    border-color: #007bff;
+}
