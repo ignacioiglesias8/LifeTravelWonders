@@ -1,6 +1,6 @@
 const continentSelect = document.querySelector("#continent-filter");
 const countrySelect = document.querySelector("#country-filter");
-const subRegionSelect = document.querySelector("#country-filter");
+const regionSelect = document.querySelector("#region-filter");
 const siteList = document.querySelector("#card-row");
 
 // Define una función para crear una tarjeta de sitio turístico
@@ -45,6 +45,23 @@ function createCountryList(sites) {
     });
 }
 
+// Define una función para crear la lista de regiones
+function createRegionList(sites) {
+    const regions = [];
+    sites.forEach((site) => {
+        if (!regions.includes(site.region)) {
+            regions.push(site.region);
+        }
+    });
+    regionSelect.innerHTML = `<option value="all-regions">All Regions</option>`;
+    regions.forEach((region) => {
+        const option = document.createElement("option");
+        option.value = region;
+        option.textContent = region;
+        regionSelect.appendChild(option);
+    });
+}
+
 // Agrega todos los sitios turísticos a la página al cargar la página
 addSitesToPage(sites);
 
@@ -73,6 +90,25 @@ countrySelect.addEventListener("change", () => {
         createCountryList(filteredSites);
     } else {
         filteredSites = sites.filter((site) => site.country === selectedCountry);
+        createRegionList(filteredSites);
+    }
+    addSitesToPage(filteredSites);
+});
+
+regionSelect.addEventListener("change", () => {
+    const selectedRegion = regionSelect.value;
+    let filteredSites;
+    if (selectedRegion === "all-regions") {
+        const selectedRegion = regionSelect.value;
+        if (selectedRegion === "all"){
+            filteredSites = sites;
+        }else{
+            filteredSites = sites.filter((site) => site.continent === selectedContinent);
+        }
+        createCountryList(filteredSites); 
+    } else {
+        filteredSites = sites.filter((site) => site.region === selectedRegion);
+        createRegionList(filteredSites);
     }
     addSitesToPage(filteredSites);
 });
