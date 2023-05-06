@@ -54,4 +54,28 @@ const sites = [{
         image: "https://via.placeholder.com/400x250?text=Chichen+Itza",
         description: "The Taj Mahal is an ivory-white marble mausoleum on the right bank of the Yamuna river in the Indian city of Agra.",
     },
+    {
+        name: "Piramides de Giza",
+        continent: "Africa",
+        country: "Egipto",
+        region: "Giza",
+        image: "https://via.placeholder.com/400x250?text=Chichen+Itza",
+        description: "The Taj Mahal is an ivory-white marble mausoleum on the right bank of the Yamuna river in the Indian city of Agra.",
+    },
+    {
+        name: "Cataratas del Iguazú",
+        continent: "America",
+        country: "Argentina",
+        region: "Misiones",
+        image: "https://via.placeholder.com/400x250?text=Chichen+Itza",
+        description: "The Taj Mahal is an ivory-white marble mausoleum on the right bank of the Yamuna river in the Indian city of Agra.",
+    },
+    {
+        name: "Coliseo",
+        continent: "Europa",
+        country: "Italia",
+        region: "Lazio",
+        image: "https://via.placeholder.com/400x250?text=Chichen+Itza",
+        description: "The Taj Mahal is an ivory-white marble mausoleum on the right bank of the Yamuna river in the Indian city of Agra.",
+    },
 ];

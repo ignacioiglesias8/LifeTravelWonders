@@ -1,7 +1,7 @@
 const continentSelect = document.querySelector("#continent-filter");
 const countrySelect = document.querySelector("#country-filter");
 const regionSelect = document.querySelector("#region-filter");
-const siteList = document.querySelector("#card-row");
+const cardRow = document.querySelector("#card-row");
 
 // Define una función para crear una tarjeta de sitio turístico
 function createSiteCard(site) {
@@ -21,10 +21,10 @@ function createSiteCard(site) {
 
 // Define una función para agregar los sitios turísticos a la página
 function addSitesToPage(sites) {
-    siteList.innerHTML = "";
+    cardRow.innerHTML = "";
     sites.forEach((site) => {
         const card = createSiteCard(site);
-        siteList.appendChild(card);
+        cardRow.appendChild(card);
     });
 }
 
