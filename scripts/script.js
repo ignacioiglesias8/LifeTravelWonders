@@ -29,6 +29,9 @@ function addSitesToPage(sites) {
     });
 }
 
+// Agrega todos los sitios turísticos a la página al cargar la página
+addSitesToPage(sites);
+
 // Define una función para crear la lista de países
 function createCountryList(sites) {
     const countries = [];
@@ -63,13 +66,12 @@ function createRegionList(sites) {
     });
 }
 
-// Agrega todos los sitios turísticos a la página al cargar la página
-addSitesToPage(sites);
-
 // Filtros de continente, país y región
+let filteredSites = sites
+
 continentSelect.addEventListener("change", () => {
     const selectedContinent = continentSelect.value;
-    let filteredSites;
+    filteredSites;
     if (selectedContinent === "all") {
         filteredSites = sites;
         countrySelect.innerHTML = `<option value="all-countries">All Countries</option>`;
@@ -119,23 +121,24 @@ regionSelect.addEventListener("change", () => {
 
 // Elemetos para la la paginación
 let itemsPerPage = 6;
+let currentPage = 1;
 let items = document.querySelectorAll('.card');
-let numItems = items.length;
+let numItems = filteredSites.length;
 let numPages = Math.ceil(numItems / itemsPerPage);
 let pagination = document.querySelector('.pagination');
+let cards = document.querySelector('.cards');
 
-// Agregar la página anterior
+// Agregar botones atrás, páginas y adelante
 let prevPage = document.createElement('li');
 prevPage.classList.add('page-item');
 let prevLink = document.createElement('a');
-prevLink.classList.add('page-link');
+prevLink.classList.add('page-link', 'prev');
 prevLink.setAttribute('href', '#', );
 prevLink.setAttribute('aria-label', 'Previous');
 prevLink.innerHTML = '<span aria-hidden="true">&laquo;</span><span class="sr-only">Previous</span>';
 prevPage.appendChild(prevLink);
 pagination.appendChild(prevPage);
 
-// Agregar las páginas
 for (let i = 1; i <= numPages; i++) {
     let page = document.createElement('li');
     page.classList.add('page-item');
@@ -151,26 +154,22 @@ for (let i = 1; i <= numPages; i++) {
     pagination.appendChild(page);
 }
 
-// Agregar la página siguiente
 let nextPage = document.createElement('li');
 nextPage.classList.add('page-item');
 let nextLink = document.createElement('a');
-nextLink.classList.add('page-link');
+nextLink.classList.add('page-link', 'next');
 nextLink.setAttribute('href', '#');
 nextLink.setAttribute('aria-label', 'Next');
 nextLink.innerHTML = '<span aria-hidden="true">&raquo;</span><span class="sr-only">Next</span>';
 nextPage.appendChild(nextLink);
 pagination.appendChild(nextPage);
 
-// Mostrar los elementos por página
+//Funciones para mostrar y navegar por números de página
 function showPage(page) {
     let startIndex = (page - 1) * itemsPerPage;
     let endIndex = Math.min(startIndex + itemsPerPage, numItems);
     for (let i = 0; i < numItems; i++) {
-        items[i].classList.add('d-none');
-    }
-    for (let j = startIndex; j < endIndex; j++) {
-        items[j].classList.remove('d-none');
+        items[i].classList.toggle('d-none', i < startIndex || i >= endIndex);
     }
     let pages = document.querySelectorAll('.pagination li');
     for (let k = 0; k < pages.length; k++) {
@@ -179,12 +178,12 @@ function showPage(page) {
     pages[page].classList.add('active');
 }
 
-// Mostrar la primera página al cargar la página
-showPage(1);
+showPage(1)
 
-// Manejar el evento de clic en la paginación
 pagination.addEventListener('click', function (event) {
     event.preventDefault();
+    const cards = document.querySelector("#destinations");
+    cards.scrollIntoView({ behavior: "smooth" });
     if (event.target.nodeName === 'A') {
         let page = parseInt(event.target.getAttribute('data-page'));
         showPage(page);
