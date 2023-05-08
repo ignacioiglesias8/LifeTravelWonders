@@ -1,3 +1,4 @@
+// Elementos del DOM
 const continentSelect = document.querySelector("#continent-filter");
 const countrySelect = document.querySelector("#country-filter");
 const regionSelect = document.querySelector("#region-filter");
@@ -65,6 +66,7 @@ function createRegionList(sites) {
 // Agrega todos los sitios turísticos a la página al cargar la página
 addSitesToPage(sites);
 
+// Filtros de continente, país y región
 continentSelect.addEventListener("change", () => {
     const selectedContinent = continentSelect.value;
     let filteredSites;
@@ -113,4 +115,78 @@ regionSelect.addEventListener("change", () => {
         filteredSites = sites.filter((site) => site.region === selectedRegion);
     }
     addSitesToPage(filteredSites);
+});
+
+// Elemetos para la la paginación
+let itemsPerPage = 6;
+let items = document.querySelectorAll('.card');
+let numItems = items.length;
+let numPages = Math.ceil(numItems / itemsPerPage);
+let pagination = document.querySelector('.pagination');
+
+// Agregar la página anterior
+let prevPage = document.createElement('li');
+prevPage.classList.add('page-item');
+let prevLink = document.createElement('a');
+prevLink.classList.add('page-link');
+prevLink.setAttribute('href', '#', );
+prevLink.setAttribute('aria-label', 'Previous');
+prevLink.innerHTML = '<span aria-hidden="true">&laquo;</span><span class="sr-only">Previous</span>';
+prevPage.appendChild(prevLink);
+pagination.appendChild(prevPage);
+
+// Agregar las páginas
+for (let i = 1; i <= numPages; i++) {
+    let page = document.createElement('li');
+    page.classList.add('page-item');
+    if (i === 1) {
+        page.classList.add('active');
+    }
+    let link = document.createElement('a');
+    link.classList.add('page-link');
+    link.setAttribute('href', '#');
+    link.setAttribute('data-page', i);
+    link.innerHTML = i;
+    page.appendChild(link);
+    pagination.appendChild(page);
+}
+
+// Agregar la página siguiente
+let nextPage = document.createElement('li');
+nextPage.classList.add('page-item');
+let nextLink = document.createElement('a');
+nextLink.classList.add('page-link');
+nextLink.setAttribute('href', '#');
+nextLink.setAttribute('aria-label', 'Next');
+nextLink.innerHTML = '<span aria-hidden="true">&raquo;</span><span class="sr-only">Next</span>';
+nextPage.appendChild(nextLink);
+pagination.appendChild(nextPage);
+
+// Mostrar los elementos por página
+function showPage(page) {
+    let startIndex = (page - 1) * itemsPerPage;
+    let endIndex = Math.min(startIndex + itemsPerPage, numItems);
+    for (let i = 0; i < numItems; i++) {
+        items[i].classList.add('d-none');
+    }
+    for (let j = startIndex; j < endIndex; j++) {
+        items[j].classList.remove('d-none');
+    }
+    let pages = document.querySelectorAll('.pagination li');
+    for (let k = 0; k < pages.length; k++) {
+        pages[k].classList.remove('active');
+    }
+    pages[page].classList.add('active');
+}
+
+// Mostrar la primera página al cargar la página
+showPage(1);
+
+// Manejar el evento de clic en la paginación
+pagination.addEventListener('click', function (event) {
+    event.preventDefault();
+    if (event.target.nodeName === 'A') {
+        let page = parseInt(event.target.getAttribute('data-page'));
+        showPage(page);
+    }
 });
